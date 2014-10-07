@@ -1,0 +1,103 @@
+# contient les attributs spécifiquement utilisés pour les applications
+# les attributs déclarés correspondent aux attributs dont on n'a pas trouvé d'équivalent
+# dans la distribution openldap.
+# 4 object class sur lesquels les applications font les filtres lors des recherches
+# application, personne, role, organisation.
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.101 NAME 'ilePostal'
+	DESC 'Ile pour l adresse postale'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.102 NAME 'complementAdresseGeo'
+	DESC 'Complement adresse geographique'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.103 NAME 'ileGeo'
+	DESC 'Complement adresse geographique'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.104 NAME 'paysGeo'
+	DESC 'Pays de l adresse geographique'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.105 NAME 'villeGeo'
+	DESC 'Ville de l adresse geographiqe'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.106 NAME 'postalCodeGeo'
+	DESC 'Adresse postale pour l adresse geographique'
+	SUP name
+	)
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.107 NAME 'nomMarital'
+	DESC 'Nom marital'
+	SUP name
+	)
+
+# En attendant de normaliser l'appli "appliDns" ...
+attributetype ( 1.3.6.1.4.1.34158.2.1.108 NAME 'appliDns'
+	DESC 'Role d acces a l application DNS'
+	SUP name
+	)
+#
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.109 NAME 'doConf'
+        DESC 'A script who does the application configuration file'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{4096} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.2.1.110 NAME 'doConfVersion'
+        DESC 'doConf version number'
+        SUP name
+        )
+
+objectclass ( 1.3.6.1.4.1.34158.2.1.3 NAME 'application'
+	SUP top
+	AUXILIARY
+	MUST (ou)
+	MAY ( description $ doConf $ doConfVersion )
+	)
+
+objectclass ( 1.3.6.1.4.1.34158.2.1.4 NAME 'personne'
+	SUP top
+	AUXILIARY
+	MUST (uid)
+	MAY ( sn $ cn $ userPassword $ telephoneNumber $ uid $ mail $ personalTitle $ givenName $ nomMarital $appliDns )
+	)
+
+objectclass ( 1.3.6.1.4.1.34158.2.1.5 NAME 'role'
+	SUP top
+	STRUCTURAL
+	MUST ( cn )
+	MAY ( memberUid $ description $ o )
+	)
+
+objectclass ( 1.3.6.1.4.1.34158.2.1.6 NAME 'organisation'
+	SUP top
+	AUXILIARY
+	MUST ( cn )
+	MAY ( memberUid $ description $ ou $ telephoneNumber $ internationaliSDNNumber $ facsimileTelephoneNumber $ street $ postOfficeBox $ postalCode $ st $ l $ ilePostal $ complementAdresseGeo $ ileGeo $ paysGeo $ villeGeo $ postalCodeGeo $ mail $ mailAlternateAddress $ seeAlso $ appliDns )
+	)
+
+# ObjectClass de la Cellule GED (carlos)
+objectclass ( 1.3.6.1.4.1.34158.2.1.7 NAME 'ldapFrontal'
+	SUP top
+	AUXILIARY
+	DESC 'Description des attributs necessaires a application LDAP'
+	MUST ( cn )
+	MAY ( description $ o )
+	)
+
+objectclass ( 1.3.6.1.4.1.34158.2.1.8 NAME 'cleLdap'
+	SUP top AUXILIARY
+	MAY ( uidnumber $ gidnumber )
+	)
+
+# Fin des déclarations---------------------------------------------
+

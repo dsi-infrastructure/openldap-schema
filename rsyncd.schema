@@ -1,0 +1,25 @@
+# $OpenLDAP: pkg/ldap/servers/slapd/schema/nis.schema,v 1.8 2001/12/07 23:36:11 kurt Exp $
+# Definitions from RFC2307 (Experimental)
+#	An Approach for Using LDAP as a Network Information Service
+
+# Depends upon share.schema.gov.pf
+
+# OID Base is iso(1) org(3) dod(6) internet(1) Private-projects(4) Private-entrerpises(1) gov.pf(34158) objets-systemes(1) gestion-rsyncd(11).
+
+
+attributetype ( 1.3.6.1.4.1.34158.1.11.100 NAME 'rsyncDomainName'
+	DESC 'Rsyncd domain to which the user belongs'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} )
+
+
+objectclass ( 1.3.6.1.4.1.34158.1.11.1 NAME 'rsyncDomain' SUP top STRUCTURAL
+        DESC 'Rsyncd Domain Information'
+        MUST ( rsyncDomainName )
+        MAY ( description $ rdOnly $ browseable $ chroot ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.11.2 NAME 'rsyncdShare' SUP top STRUCTURAL
+	DESC 'Rsyncd Share Section'
+	MUST ( shareName $ path )
+	MAY ( description $ rdOnly $ memberUid $ hostsAllow $ HostsDeny $ browseable $ uid $ gid $ exclude $ chroot ) )
+

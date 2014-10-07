@@ -1,0 +1,15 @@
+# $OpenLDAP: pkg/ldap/servers/slapd/schema/nis.schema,v 1.8 2001/12/07 23:36:11 kurt Exp $
+# Definitions from RFC2307 (Experimental)
+#	An Approach for Using LDAP as a Network Information Service
+
+# Depends upon share.schema.gov.pf
+
+# OID Base is iso(1) org(3) dod(6) internet(1) Private-projects(4) Private-entrerpises(1) gov.pf(34158) objets-systemes(1) gestion_samba(10).
+
+
+
+objectclass ( 1.3.6.1.4.1.34158.1.10.2 NAME 'share' SUP top AUXILIARY
+	DESC 'Samba Share Section'
+	MUST ( path )
+	MAY ( description $ rdOnly $ guestOk $ writeable $ browseable $ memberUid $ ACL $ trash $ hostsAllow $ HostsDeny ) )
+

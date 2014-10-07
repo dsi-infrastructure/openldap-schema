@@ -1,0 +1,298 @@
+# $OpenLDAP: pkg/ldap/servers/slapd/schema/nagios.schema,v 1.0 2008/12/05 09:11:12 PhilE $
+# Definitions from RFC2307 (Experimental)
+#	An Approach for Using LDAP as a Network Information Service
+
+# Depends upon share.schema.gov.pf
+
+# OID Base is iso(1) org(3) dod(6) internet(1) Private-projects(4) Private-entrerpises(1) gov.pf(34158) objets-systemes(1) gestion_nagios(12).
+
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.1 NAME 'hostNotificationEnable'
+	DESC 'host_notification_enable'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.2 NAME 'serviceNotificationEnable'
+	DESC 'service_notification_enable'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.3 NAME 'hostNotificationPeriod'
+	DESC 'hostNotificationPeriod'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.4 NAME 'serviceNotificationPeriod'
+	DESC 'serviceNotificationPeriod'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.5 NAME 'hostNotificationOptions'
+	DESC 'hostNotificationOptions'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.6 NAME 'serviceNotificationOptions'
+	DESC 'serviceNotificationOptions'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.7 NAME 'hostNotificationCommands'
+	DESC 'hostNotificationCommands'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.8 NAME 'serviceNotificationCommands'
+	DESC 'serviceNotificationCommands'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} SINGLE-VALUE )
+
+#attributetype ( 1.3.6.1.4.1.34158.1.12.7 NAME 'email'
+#	DESC 'email'
+#	EQUALITY caseIgnoreMatch
+#	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+#attributetype ( 1.3.6.1.4.1.34158.1.12.8 NAME 'pager'
+#	DESC 'pager'
+#	EQUALITY caseIgnoreMatch
+#	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.9 NAME 'adressx'
+	DESC 'adressx'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.10 NAME 'canSubmitCommands'
+	DESC 'can_submit_commands'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.11 NAME 'retainStatusInformation'
+	DESC 'retainStatusInformation'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.12 NAME 'retainNonstatusInformation'
+	DESC 'retainNonstatusInformation'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.13 NAME 'contactgroupMembers'
+	DESC 'contactgroupMembers'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.14 NAME 'addressx'
+	DESC 'addressx'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.15 NAME 'parents'
+	DESC 'parents'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.16 NAME 'register'
+	DESC 'generic definition'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.17 NAME 'notificationsEnabled'
+	DESC 'notification_enable'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.18 NAME 'eventHandlerEnabled'
+	DESC 'event_handler_enabled'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.19 NAME 'flapDetectionEnabled'
+	DESC 'flap_detection_enabled'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.20 NAME 'failurePredictionEnabled'
+	DESC 'failure_prediction_enabled'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.21 NAME 'processPerfData'
+	DESC 'process_perf_data'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.22 NAME 'notificationPeriod'
+	DESC 'failurePredictionEnabled'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.23 NAME 'checkPeriod'
+	DESC 'checkPeriod'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.24 NAME 'checkInterval'
+	DESC 'checkInterval'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.25 NAME 'retryInterval'
+	DESC 'retryInterval'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.26 NAME 'maxCheckAttempts'
+	DESC 'maxCheckAttempts'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.27 NAME 'contactGroups'
+	DESC 'contactGroups'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.28 NAME 'notificationInterval'
+	DESC 'notificationInterval'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.29 NAME 'notificationOptions'
+	DESC 'notificationOptions'
+	EQUALITY caseIgnoreMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.30 NAME 'activeChecksEnabled'
+	DESC 'activeChecksEnabled'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.31 NAME 'passiveChecksEnabled'
+	DESC 'passiveChecksEnabled'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.32 NAME 'isVolatile'
+	DESC 'isVolatile'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.33 NAME 'checkFreshness'
+	DESC 'checkFreshness'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.34 NAME 'parallelizeCheck'
+	DESC 'parallelizeCheck'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.35 NAME 'obsessOverService'
+	DESC 'obsessOverService'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.36 NAME 'normalCheckInterval'
+	DESC 'normalCheckInterval'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.37 NAME 'retryCheckInterval'
+	DESC 'retryCheckInterval'
+	EQUALITY integerMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.38 NAME 'hostgroups'
+	DESC 'hostgroups'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.100 NAME 'iconImage'
+	DESC 'icon_image'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.101 NAME 'iconImageAlt'
+	DESC 'icon_image_alt'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.102 NAME 'vrmlImage'
+	DESC 'vrml_image'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.103 NAME 'statusmapImage'
+	DESC 'statusmap_image'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.104 NAME 'deuxDCoords'
+	DESC '2d_coords'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.34158.1.12.105 NAME 'troisDCoords'
+	DESC '3d_coords'
+	EQUALITY caseExactIA5Match
+	SUBSTR caseExactIA5SubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+
+
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.256 NAME 'contact' SUP top STRUCTURAL
+	DESC 'contact definition'
+	MUST ( cn )
+	MAY ( include $ description $ shareName $ memberUid $ email $ pager $ addressx $ canSubmitCommands $ retainStatusInformation $ retainNonstatusInformation $ hostNotificationEnable $ serviceNotificationEnable $ hostNotificationPeriod $ serviceNotificationPeriod $ hostNotificationOptions $ serviceNotificationOptions $ hostNotificationCommands $ ServiceNotificationCommands $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.257 NAME 'contactgroup' SUP top STRUCTURAL
+	DESC 'contactgroup'
+	MUST ( cn $ shareName $ memberUid $ description )
+	MAY ( contactgroupMembers $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.258 NAME 'host' SUP top STRUCTURAL
+	DESC 'host definition'
+	MUST ( cn )
+	MAY ( description $ domainName $ shareName $ displayName $ include $ shareGroups $ description $ register $ notificationPeriod $ checkPeriod $ notificationsEnabled $ eventHandlerEnabled $ flapDetectionEnabled $ failurePredictionEnabled $ processPerfData $ retainStatusInformation $ retainNonstatusInformation $ notificationPeriod $ checkInterval $ retryInterval $ maxCheckAttempts $ path $ contactGroups $ notificationInterval $ notificationOptions $ activeChecksEnabled $ passiveChecksEnabled $ hostgroups $ iconImage $ iconImageAlt $ vrmlImage $ statusmapImage $ deuxDCoords $ troisDCoords $ parents $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.259 NAME 'hostGroup' SUP top STRUCTURAL
+	DESC 'hostgroup definition'
+	MUST ( cn $ shareName $ description )
+	MAY ( memberUid ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.260 NAME 'service' SUP top STRUCTURAL
+	DESC 'service definition'
+	MUST ( cn )
+	MAY ( shareName $ description $ path $ displayName $ include $ memberUid $ activeChecksEnabled $ passiveChecksEnabled $ parallelizeCheck $ obsessOverService $ checkFreshness $ notificationsEnabled $ eventHandlerEnabled $ flapDetectionEnabled $ failurePredictionEnabled $ processPerfData $ retainStatusInformation $ retainNonstatusInformation $ isVolatile $ checkPeriod $ maxCheckAttempts $ normalCheckInterval $ retryCheckInterval $ contactGroups $ notificationOptions $ notificationInterval $ notificationPeriod $ obsessOverService $ retryCheckInterval $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.261 NAME 'serviceGroup' SUP top STRUCTURAL
+	DESC 'servicegroup definition'
+	MUST ( cn $ shareName $ description )
+	MAY ( memberUid $ shareGroupMembers $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.262 NAME 'timeperiod' SUP top STRUCTURAL
+	DESC 'timeperiod definition'
+	MUST ( cn $ shareName $ description )
+	MAY ( memberUid $ exclude $ include $ register ) )
+
+objectclass ( 1.3.6.1.4.1.34158.1.12.263 NAME 'command' SUP top STRUCTURAL
+	DESC 'command definition'
+	MUST ( cn $ shareName $ description )
+	MAY ( register ) )
+
+
+
